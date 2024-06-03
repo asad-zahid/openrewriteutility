@@ -1,0 +1,25 @@
+openrewrite:
+  maven:
+    command:
+      recipe:
+        java17: mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-migrate-java:RELEASE
+          -Drewrite.activeRecipes=org.openrewrite.java.migrate.UpgradeToJava17
+        java21: mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-migrate-java:RELEASE
+          -Drewrite.activeRecipes=org.openrewrite.java.migrate.UpgradeToJava21
+        springboot3: mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-spring:RELEASE
+          -Drewrite.activeRecipes=org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_2
+        owasp: mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-java-security:RELEASE
+          -Drewrite.activeRecipes=org.openrewrite.java.security.OwaspTopTen
+  active:
+    recipe: openrewrite.maven.command.recipe.java21
+logging:
+  pattern:
+    file: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){green} [%level] %c{1.} [%t] %m%n'
+  file:
+    name: error.log
+spring:
+  application:
+    name: openrewriteutility
+git:
+  repo:
+    path: C:\Git\
