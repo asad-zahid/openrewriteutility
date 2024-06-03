@@ -11,15 +11,15 @@ openrewrite:
         owasp: mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-java-security:RELEASE
           -Drewrite.activeRecipes=org.openrewrite.java.security.OwaspTopTen
   active:
-    recipe: openrewrite.maven.command.recipe.java21
+    recipe: openrewrite.maven.command.recipe.java21  # which openrewrite recipe is currently active
 logging:
   pattern:
     file: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){green} [%level] %c{1.} [%t] %m%n'
   file:
-    name: error.log
+    name: process.log
 spring:
   application:
     name: openrewriteutility
 git:
   repo:
-    path: C:\Git\
+    path: C:\Git\              # Path of git repos
